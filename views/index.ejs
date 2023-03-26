@@ -1,0 +1,89 @@
+<!-- HTML code for a search page -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search Page</title>
+
+    <!-- Importing Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Importing jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Styling the page -->
+    <style>
+      /* Styling the search bar */
+      .input-group {
+        height: 200px;
+        width: 50%;
+        margin-top: 50px;
+        padding: 2rem;
+        margin-left: 350px;
+      }
+
+      /* Styling the body */
+      body{
+        align-items: center;
+        background: rgb(45,55,121);
+        background: linear-gradient(90deg, rgba(45,55,121,0.6337885495995272) 0%, rgba(89,171,185,0.19121151878720233) 65%, rgba(160,182,190,1) 100%, rgba(207,226,230,1) 100%);
+      }
+
+      /* Styling the search button */
+      #search{
+        margin-top:50px;
+        margin-left: 350px;
+      }
+
+      /* Styling the scrollable table */
+      .scrollit {
+        overflow: scroll;
+        height: 300px;
+        width: 100%;
+        margin-top: 50px;
+        padding: 2rem;
+      }
+    </style>
+
+  </head>
+  <body>
+    <!-- Search bar with a search button -->
+    <div class="input-group">
+      <input type="search" class="form-control rounded" placeholder="Search NucleotideSeq" aria-label="Search" aria-describedby="search-addon" />
+      <button type="button" class="btn btn-outline-primary" id="search">Search</button>
+    </div>
+
+    <!-- Table displaying search results -->
+   <div class="scrollit">
+     <% if(details!=null) { %>
+     <table class="table table-hover table table-bordered">
+       <!-- Table headers -->
+       <tr>
+         <th>Sl_no</th>
+         <th>Info </th>
+         <th>NucleotideSeq</th>
+         <th>Size</th>
+         <th>per</th>
+         <th>ProteinSeq</th>
+         <th>Remark</th>
+       </tr>
+       <% details.forEach(function(item){ %>
+       <!-- Table data -->
+       <tr>
+         <td style="white-space: nowrap;"><%= item.Sl_no%></td>
+         <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" title=<%= item.Info%> ><%= item.Info%></td>
+         <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" title=<%= item.NucleotideSeq%>><%= item.NucleotideSeq%></td>
+         <td style="white-space: nowrap;"><%= item.Size%></td>
+         <td style="white-space: nowrap;"><%= item.per%></td>
+         <td style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; max-width:1px;" title=<%= item.ProteinSeq%>><%= item.ProteinSeq%></td>
+         <td style="white-space: nowrap;"><%= item.Remark%></td>
+       </tr>
+       <% }) %>
+     </table>
+     <% } %>
+   </div>
+
+   <button class = "btn btn-lg btn-warning" type="button" name="button" style="margin:1rem;" onclick="location.href='/';">Go Back</button>
+ </body>
+ </html>
